@@ -8,7 +8,9 @@ let assert = require('./assert');
 let Person = require('./class');
 
 // import variable(s)
-const constants = require('./constants.js');
+const constants = require('./constants');
+
+let foo = require('./function');
 
 // print some to validate below
 console.log(constants.seasons);
@@ -18,6 +20,8 @@ console.log(`Hans his preferred roomtype is ${constants.roomType.normal.name}`)
 console.log(typeof tools.foo); // => 'function'
 console.log(typeof tools.bar); // => 'function'
 console.log(typeof tools.zemba); // => undefined
+
+console.log(foo());
 
 let piet = new Person("Piet");
 

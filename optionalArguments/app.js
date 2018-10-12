@@ -1,6 +1,6 @@
 "use strict";
 
-function add(x, y) {
+function add(x, y=0) {
   return x+y;
 }
 
