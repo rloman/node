@@ -1,9 +1,9 @@
 function successCallback(result) {
-  console.log("Audio file ready at URL: " + result);
+
 }
 
 function failureCallback(error) {
-  console.log("Error generating audio file: " + error);
+
 }
 
 function createAudioFileAsync(audioSettings) {
@@ -20,12 +20,17 @@ let audioSettings = {
   volume: 50
 }
 
-var promise = createAudioFileAsync(audioSettings);
-
-promise.then(successCallback, failureCallback);
+createAudioFileAsync(audioSettings).then(success => {
+    console.log("Audio file ready at URL: " + success);
+}, error => {
+    console.log("Error generating audio file: " + error);
+});
 
 
 audioSettings.sound = false;
-promise = createAudioFileAsync(audioSettings);
 
-promise.then(successCallback, failureCallback);
+createAudioFileAsync(audioSettings).then(success => {
+    console.log("Audio file ready at URL: " + success);
+}, error => {
+    console.log("Error generating audio file: " + error);
+});
