@@ -4,6 +4,7 @@
 <head>
   <title>My first page</title>
 
+  <script src="events.js"></script>
 </head>
 
 <body>
@@ -11,7 +12,9 @@
       <tr>
           <th>Name</th><th>City</th><th>Hobbies</th>
       </tr>
-      <tr><td>John Doe</td><td>San Fransisco</td><td>Reading</td></tr>
+      <tr><td id="name">John Doe</td><td id="city">San Fransisco</td><td id="hobbies">Reading</td></tr>
   </table>
+
+  <button onclick="eventClickButton();">Update</button>
 </body>
 </html>
