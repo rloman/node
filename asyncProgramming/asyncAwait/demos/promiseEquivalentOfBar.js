@@ -9,7 +9,6 @@ function printBar() {
       value => {
         console.log(value);
       }
-
     );
 }
 
