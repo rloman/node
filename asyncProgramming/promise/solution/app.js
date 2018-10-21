@@ -1,9 +1,22 @@
+// this is the asynchronous, Promise returning function
 function getAgeBasedOnCurrentAndBirthYearPromise(current, birth) {
-  return Promise.resolve(current - birth);
+  if(current - birth > 0) {
+
+    // this line returns a successful Promise (.resolve)
+    return Promise.resolve(current - birth);
+  }
+  else {
+
+    // this line returns a failing Promise (.reject)
+    return Promise.reject(`${current} - ${birth}`);
+  }
 }
 
 
-function main(current, birth) {
+// this is the synchronouse value (int) returning function
+function getAge(current, birth) {
+
+  // this method invokes the ASYNCHRONOUS function
   let promisedAge = getAgeBasedOnCurrentAndBirthYearPromise(current, birth);
 
   // prints Promise { 50} since IT IS A PROMISE
@@ -11,18 +24,21 @@ function main(current, birth) {
 
   // now the value please
 
-  promisedAge.then (
-    success => {
+  // the result of the ASYNCHRONOUS call (promisedAge)
+  promisedAge.then ( // then means, after this there are two handlers (success and error which follow)
+    success => { // the success handler
       console.log(success);
     },
-    error => {
+    error => { // the error handler
       console.log(`Unable to use this dates for calculation: ${error}`);
     }
   );
 
 }
 
-// should print 50
-main(2018, 1968);
+getAge(2018, 1968); // <= 50
 
-main
+getAge(1968, 2018); // <= prints failure message
+
+// be aware that printing to the console might be random or should be even printed first both Promise objects
+// and than the value(s)
