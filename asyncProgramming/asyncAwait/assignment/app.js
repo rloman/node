@@ -1,4 +1,5 @@
 // this is the asynchronous, Promise returning function
+// no validation for the current - birth > 2018 for now!!!
 ... function getAgeBasedOnCurrentAndBirthYearPromise(current, birth) {
   return ...
 }
@@ -23,6 +24,3 @@
 
 // should print 50
 getAge(2018, 1968);
-
-// should print an error message
-getAge(1968, 2018);
