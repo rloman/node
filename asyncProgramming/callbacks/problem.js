@@ -1,11 +1,13 @@
-function first(){
+function doHomework(){
   // Simulate a code delay
   setTimeout( function(){
-    console.log(1);
+    console.log("Doing my homework!"); // you should invoke the callback here! // so pass it in ... see fix.js
   }, 500 );
 }
-function second(){
-  console.log(2);
+function finishHomeWork(){
+  console.log("Finished my homework!");
 }
-first();
-second();
+
+
+doHomework();
+finishHomeWork();

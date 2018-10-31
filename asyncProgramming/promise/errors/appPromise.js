@@ -24,7 +24,6 @@ var promise = createAudioFileAsync(audioSettings);
 
 promise.then(successCallback, failureCallback);
 
-
 audioSettings.sound = false;
 promise = createAudioFileAsync(audioSettings);
 

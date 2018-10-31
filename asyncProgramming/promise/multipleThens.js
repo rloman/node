@@ -1,4 +1,8 @@
+
+// step 1
 let fifteen = Promise.resolve(15);
+
+// step 3
 fifteen.then(value => {
   console.log(`Got ${value}`); // <= Got 15
 
@@ -10,3 +14,6 @@ fifteen.then(value => {
 } ).then (n => {
   console.log(n);
 });
+
+// step 2
+console.log("Done / Einde programma");
