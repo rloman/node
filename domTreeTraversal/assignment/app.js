@@ -10,16 +10,11 @@ function perform() {
     if (node.tagName == "SPAN") {
       console.log("Found span with content:" + node.innerHTML);
     }
-    if (node.tagName == "TD") {
-      console.log("Found TD node with content:" + node.innerHTML);
-    }
 
-    if (node.tagName == "TR") {
-      console.log("Found TR node with content:" + node.innerHTML);
-    }
+    // ASSIGNMENT!!!
+    // read the TD inner html content
 
-    if (node.tagName == "TABLE") {
-      console.log("Found TABLE node with content:" + node.innerHTML);
-    }
+    // bonus ASSIGNMENT
+    // read the table and the tr html content
   }
 }
