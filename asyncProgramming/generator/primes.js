@@ -21,6 +21,7 @@ function isPrime(n) {
 function* getPrimes(start, end) {
   for(let n = start;n <= end;n++) {
     if(isPrime(n)) {
+      console.log("Yielding: "+n)
       yield n;
     }
   }
@@ -41,15 +42,5 @@ assert("2003 should be prime", isPrime(2003));
 let iterator = getPrimes(12, 50);
 
 for(let element of iterator) {
-  // console.log(`Prime: ${element}`);
+  console.log(`Prime: ${element}`);
 }
-
-let primes = [];
-
-// why again :-) since iterator is already run over
-iterator = getPrimes(12, 50);
-
-for(let element of iterator){
-  primes.push(element);
-}
-console.log(primes.join());
