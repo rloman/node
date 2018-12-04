@@ -1,7 +1,10 @@
 <html>
 
 <head>
- <script>
+  <script>
+
+  "use strict";
+
 	function userVersturen(){
 		var api = document.getElementById("apiUrl").value;
 		var name = document.getElementById("name").value;
@@ -29,6 +32,7 @@
 		xhttp.onreadystatechange = function() {
   		if (this.readyState == 4 && this.status == 200) {
     		document.getElementById("demo").innerHTML = this.responseText;
+       	    parseJson(this.responseText);
   		}
 		};
 		xhttp.open("GET", "http://localhost:8081/"+api);
@@ -36,23 +40,39 @@
 		xhttp.send();
 	}
 
+  function parseJson(data) {
+    // hopefully data contains a String containing a list of userVersturen
+    let users = JSON.parse(data);
+
+    for(let user of users) {
+        console.log(`found a user with id: ${user.id} and name:${user.name} and username:${user.username}`);
+    }
+    // and you can do a lot more of it
+  }
+
 	</script>
 </head>
 
 <body>
-	RESULT SERVER: <div id=demo></div>
-	<hr>
+  RESULT SERVER as JSON string: <div id=demo></div>
+  <hr>
 
-	api: <input type=text id="apiUrl" value="api/users" />
-	<hr />
+  api: <input type=text id="apiUrl" value="api/users" />
+  <hr />
 
-	<h3>User</h3>
-	name:<input type="text" id="name" /><br />
-	user name:<input type="text" id="username" /><br />
-	email:<input type="text" id="email" /><br />
-	<hr />
-	<button onclick="userVersturen()">Verstuur</button>
-	<button onclick="getData('api/users')">getData 'all users'</button>
+  <h3>User</h3>
+  <label for="name">Name
+    <input type="text" id="name" />
+  </label>
+  <label for="username">Username
+    <input type="text" id="username" />
+  </label>
+  <label for="email">Email
+    <input type="text" id="email" />
+  </label>
+  <hr />
+  <button onclick="userVersturen()">Verstuur</button>
+  <button onclick="getData('api/users')">getData 'all users'</button>
 </body>
 
 </html>
