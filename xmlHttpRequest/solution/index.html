@@ -1,0 +1,58 @@
+<html>
+
+<head>
+ <script>
+	function guestVersturen(){
+		var api = document.getElementById("apiUrl").value;
+		var name = document.getElementById("name").value;
+		var username = document.getElementById("guestName").value;
+		var email = document.getElementById("email").value;
+
+		var guest = {name:name, username:username, email:email};
+		postData(api, JSON.stringify(guest));
+	}
+
+	function postData(api, data){
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 201) {
+  			document.getElementById("demo").innerHTML = this.responseText;
+			}
+		};
+		xhttp.open("POST", "http://localhost:8081/"+api, true);
+		xhttp.setRequestHeader("Content-type", "application/json");
+		xhttp.send(data);
+	}
+
+	function getData(api){
+  	var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+  		if (this.readyState == 4 && this.status == 200) {
+    		document.getElementById("demo").innerHTML = this.responseText;
+  		}
+		};
+		xhttp.open("GET", "http://localhost:8081/"+api);
+		xhttp.setRequestHeader("Content-type", "application/json");
+		xhttp.send();
+	}
+
+	</script>
+</head>
+
+<body>
+	RESULT SERVER: <div id=demo></div>
+	<hr>
+
+	api: <input type=text id="apiUrl" value="api/guests" />
+	<hr />
+
+	<h3>User</h3>
+	name:<input type="text" id="name" /><br />
+	user name:<input type="text" id="username" /><br />
+	email:<input type="text" id="email" /><br />
+	<hr />
+	<button onclick="guestVersturen()">Verstuur</button>
+	<button onclick="getData('api/guests')">getData 'all guests'</button>
+</body>
+
+</html>
