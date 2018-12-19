@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+
+      $("button").click(function() {
+        var href = $("a").attr('href');
+        console.log(href);
+        var hrefs=  $("a").each(function() { // getting a this here
+          console.log($(this).attr('href'));
+
+        });
+
+      });
+
+    });
+  </script>
+</head>
+
+<body>
+
+  <a href="http://www.ajax.nl">Ajax</a>
+  <a href="http://www.nu.nl">Nieuws.nu</a>
+  <a href="http://www.nac.nl">De mooiste club</a>
+  <a href="http://www.heracles.nl">De allermooiste club</a>
+
+  <button>Show</button>
+
+</body>
+
+</html>
