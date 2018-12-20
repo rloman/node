@@ -8,11 +8,19 @@
 
       $("button").click(function() {
         var href = $("a").attr('href');
+        console.log("First link");
         console.log(href);
+        console.log("All links");
         var hrefs=  $("a").each(function() { // getting a this here
           console.log($(this).attr('href'));
-
         });
+
+// vout
+/*
+        var hrefs2= $("a").each (n => {
+          console.log($(n).attr('href'));
+        });
+        */
 
       });
 

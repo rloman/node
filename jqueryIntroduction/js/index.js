@@ -6,7 +6,7 @@ function buttonClicked() {
 
 function buttonClickedById() {
 
-  $("#third").hide();
+  $("#third").hide(1000);
 
 }
 

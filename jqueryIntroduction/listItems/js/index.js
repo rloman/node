@@ -1,3 +1,3 @@
 function first() {
-  $("li:first").addClass("redbox").fadeOut();
+  $("li:first").addClass("redbox").fadeOut(3000);
 }
