@@ -17,19 +17,30 @@
 <body>
 
   <div class="container-fluid">
+    <nav class="nav nav-justified nav-pills">
+      <a class="nav-item nav-link show fade" data-toggle="pill" id="xs">Extra Small</a>
+      <a class="nav-item nav-link show fade" data-toggle="pill" id="sm">Small</a>
+      <a class="nav-item nav-link show fade" data-toggle="pill" id="md" href="#">Medium</a>
+      <a class="nav-item nav-link show fade" data-toggle="pill" id="lg" href="#">Large</a>
+      <a class="nav-item nav-link show fade" data-toggle="pill" id="xl" href="#">Extra Large</a>
+      <a class="nav-item nav-link disabled" data-toggle="pill" href="#">Disabled</a>
+    </nav>
+  </div>
+
+  <div class="container-fluid">
     <div class="row">
-      <div class="col-md-2">
+      <div id="left" class="col-md-2">
         <div class="customDiv">
-            <ul>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                <li>Quisque rhoncus massa ultricies, iaculis lectus eu, suscipit mauris.</li>
-                <li>Donec malesuada massa vestibulum nisi ullamcorper, sit amet luctus magna iaculis.</li>
-                <li>Aenean vitae orci non nibh semper mollis.</li>
-                <li>Suspendisse vel nisl ullamcorper, porttitor eros at, vehicula dolor.</li>
-                </ul>
+          <ul>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+            <li>Quisque rhoncus massa ultricies, iaculis lectus eu, suscipit mauris.</li>
+            <li>Donec malesuada massa vestibulum nisi ullamcorper, sit amet luctus magna iaculis.</li>
+            <li>Aenean vitae orci non nibh semper mollis.</li>
+            <li>Suspendisse vel nisl ullamcorper, porttitor eros at, vehicula dolor.</li>
+          </ul>
         </div>
       </div>
-      <div class="col-md-8">
+      <div id="content" class="col-md-9">
         <div class="customDiv">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porttitor leo a ex pulvinar rutrum. Maecenas
           posuere metus vitae ultrices iaculis. Quisque sodales lorem eu risus vehicula tincidunt. Vestibulum non
@@ -55,9 +66,9 @@
         </div>
 
       </div>
-      <div class="col-md-2">
+      <div id="right" class="col-md-1">
         <div class="customDiv">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Boostrap_logo.svg/128px-Boostrap_logo.svg.png" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Boostrap_logo.svg/128px-Boostrap_logo.svg.png" />
         </div>
 
       </div>
@@ -73,6 +84,8 @@
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
     crossorigin="anonymous"></script>
+
+    <script src="index.js"></script>
 </body>
 
 </html>
