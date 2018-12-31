@@ -2,7 +2,9 @@ $(document).ready(function() {
     // $('#myTable').DataTable();
     initDataTable('http://jsonplaceholder.typicode.com/users');
 
-    getData();
+    $(".btn-warning").click(clear);
+    $(".btn").click(getData);
+
 });
 
 function initDataTable(api) {
@@ -27,6 +29,11 @@ function initDataTable(api) {
     } );
 }
 
+function clear() {
+    $("#dataTable").DataTable().clear();
+    $("#dataTable").DataTable().columns.adjust().draw();
+}
+
 function getData() {
-             $("#dataTable").dataTable().api().ajax.reload();
+          $("#dataTable").dataTable().api().ajax.reload();
  }

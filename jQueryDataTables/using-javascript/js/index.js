@@ -1,16 +1,19 @@
 $(document).ready(function() {
-    // $('#myTable').DataTable();
-    initDataTable('http://jsonplaceholder.typicode.com/users');
+    initDataTable();
+    let api = 'http://jsonplaceholder.typicode.com/posts';
+    
 
-    // getData('http://jsonplaceholder.typicode.com/users');
+    $(".btn").click(function() {
+        getData(api);
+    });
 });
 
-function initDataTable(api) {
+function initDataTable() {
 
     columns = [
         { "data": "id" },
-        { "data": "name" },
-        { "data": "username" }
+        { "data": "title" },
+        { "data": "body" }
         /*,
         {  "render": function(data, type, full){
             return '<a title="Delete this table" <i class="fa fa-pencil-alt"></i> </a>';
@@ -19,29 +22,18 @@ function initDataTable(api) {
 
     $('#dataTable').DataTable( {
         "order": [[ 0, "asc" ]],
-        "ajax": {
-            url: api,
-            dataSrc: ''
-        },
         "columns": columns
     } );
 }
 
 function getData(api) {
-    //if(window.location.pathname == "/addBooking"){return;}
-    //var api = "http://localhost:8080/api/tables";
-    api = String(api);
 
     $.get(api, function(data){
-        console.log(data);
-        if (data){
 
-            alert(data);
-            
+        if (data){
              $("#dataTable").DataTable().clear();
              $("#dataTable").DataTable().rows.add(data);
              $("#dataTable").DataTable().columns.adjust().draw();
-            //  $("#dataTable").dataTable().api().ajax.reload();
         }
     });
  }
