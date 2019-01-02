@@ -7,21 +7,48 @@
 <head>
     <title>Posts</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css"/>
- 
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" />
+
 </head>
 
 <body>
 
-    <table id="dataTable" class="display">
-    </table>
 
-    <button class="btn-warning">Clear</button>
-    <button class="btn">Fetch</button>
+    <div class="container">
 
-    <script src="https://code.jquery.com/jquery-3.3.1.js" ></script>
-    <script src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script>
-    
+        <div class="row">
+
+            <div class="col-lg-9">
+
+                <table id="dataTable" class="table table-striped table-bordered hover">
+                        <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>title</th>
+                                    <th>body</th>
+                                </tr>
+                            </thead>
+                </table>
+            </div>
+            <div class="col-lg-3">
+                <button class="btn-warning">Clear</button>
+                <button class="btn">Fetch</button>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
     <script src="js/index.js"></script>
+
+
 </body>
