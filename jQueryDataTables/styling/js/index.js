@@ -1,13 +1,15 @@
 $(document).ready(function() {
     initDataTable();
     let api = 'http://jsonplaceholder.typicode.com/posts';
+
+    getData(api);
     
 
-    $(".btn").click(function() {
+    $("#fetch").click(function() {
         getData(api);
     });
 
-    $(".btn-warning").click(function() {
+    $("#clear").click(function() {
         clear();
     });
 });
@@ -15,9 +17,10 @@ $(document).ready(function() {
 function initDataTable() {
 
     columns = [
-        { "data": "id" },
-        { "data": "title" },
-        { "data": "body" }
+        { "title": "ID",   "data": "id" }, 
+        { "title": "Title", "data": "title" },
+        { "title": "Body of post", "data": "body" },
+      
         /*,
         {  "render": function(data, type, row, meta){
             return '<a title="Delete this table" <i class="fa fa-pencil-alt"></i> </a>';
