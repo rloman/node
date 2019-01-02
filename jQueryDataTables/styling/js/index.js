@@ -27,9 +27,14 @@ function initDataTable() {
         } },*/
     ];
 
-    $('#dataTable').DataTable( {
+    let dataTable = $('#dataTable').DataTable( {
         "order": [[ 0, "asc" ]],
         "columns": columns
+    } );
+
+    $('#dataTable tbody').on('click', 'tr', function () {
+        var data = dataTable.row( this ).data();
+        alert( 'You clicked on '+data.id+'\'s row' );
     } );
 }
 
