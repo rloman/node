@@ -6,6 +6,10 @@ $(document).ready(function() {
     $(".btn").click(function() {
         getData(api);
     });
+
+    $(".btn-warning").click(function() {
+        clear();
+    });
 });
 
 function initDataTable() {
@@ -15,7 +19,7 @@ function initDataTable() {
         { "data": "title" },
         { "data": "body" }
         /*,
-        {  "render": function(data, type, full){
+        {  "render": function(data, type, row, meta){
             return '<a title="Delete this table" <i class="fa fa-pencil-alt"></i> </a>';
         } },*/
     ];
@@ -26,8 +30,14 @@ function initDataTable() {
     } );
 }
 
+function clear(){
+    $("#dataTable").DataTable().clear();
+    $("#dataTable").DataTable().columns.adjust().draw();
+}
+
 function getData(api) {
 
+    // asynchronous REST GET
     $.get(api, function(data){
 
         if (data){
