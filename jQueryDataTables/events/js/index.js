@@ -33,9 +33,28 @@ function initDataTable() {
     } );
 
     $('#dataTable tbody').on('click', 'tr', function () {
-        var data = dataTable.row( this ).data();
-        alert( 'You clicked on '+data.id+'\'s row' );
+        var personData = dataTable.row( this ).data();
+        alert( 'You clicked on '+personData.id+'\'s row' );
+        alert( `which has title "${personData.title}"` );
+
+
+        // and now we could fetch the detail data of this one row and use Bootstrap Modal (later)
+        // https://getbootstrap.com/docs/4.0/components/modal/
     } );
+
+    // like this! for later since we have to learn Bootstrap Modal first
+    $('#dataTable').on( 'click', 'tr', function () {
+        if ( $(this).hasClass('selected') ) {
+            $(this).removeClass('selected');
+        }
+        else {
+            $(this).addClass('selected');
+            var table = $('#dataTable').DataTable();
+            var data = table.row(this).data();
+            // getSingleRecord(data.id, api);
+            // $('#modal').modal('toggle');
+        }
+    });
 }
 
 function clear(){
