@@ -1,6 +1,8 @@
+let api = 'http://jsonplaceholder.typicode.com/posts';
+
 $(document).ready(function() {
     initDataTable();
-    let api = 'http://jsonplaceholder.typicode.com/posts';
+   
 
     getData(api);
     
@@ -13,9 +15,11 @@ $(document).ready(function() {
         clear();
     });
     $("#addBtn").on( 'click', function (){
+        document.getElementById("modal-title").innerHTML="Create a table";
+        document.getElementById("modalForm").reset();
         $("#btnsubmit").attr('onclick', 'submitNew("' + api +'");');
         $('#modal').modal('toggle');
-        document.getElementById("modalForm").reset();
+        
   });
 });
 
@@ -37,29 +41,23 @@ function initDataTable() {
         "columns": columns
     } );
 
-    $('#dataTable tbody').on('click', 'tr', function () {
-        var personData = dataTable.row( this ).data();
-        alert( 'You clicked on '+personData.id+'\'s row' );
-        alert( `which has title "${personData.title}"` );
-
-
-        // and now we could fetch the detail data of this one row and use Bootstrap Modal (later)
-        // https://getbootstrap.com/docs/4.0/components/modal/
-    } );
-
-    // like this! for later since we have to learn Bootstrap Modal first
-    $('#dataTable').on( 'click', 'tr', function () {
+    $('#dataTable tbody').on( 'click', 'tr', function () {
         if ( $(this).hasClass('selected') ) {
             $(this).removeClass('selected');
         }
         else {
+            deselect();
             $(this).addClass('selected');
             var table = $('#dataTable').DataTable();
             var data = table.row(this).data();
-            // getSingleRecord(data.id, api);
-            // $('#modal').modal('toggle');
+
+            // this function fetches one record and fill the modal with the data and shows the modal for editing
+            getSingleRecord(data.id, api);
+
+            $('#modal').modal('toggle');
         }
     });
+   
 }
 
 function clear(){
@@ -116,3 +114,71 @@ function deselect(){
     
     document.getElementById("modalForm").reset();
  }
+
+ function getSingleRecord(id, api){
+
+    apiPath = String(api +"/"+ id);
+    $.get(apiPath, function(data){
+        if (data){
+            fillUpdateDiv(data, api);
+        }
+    });
+ }
+ 
+ 
+ function fillUpdateDiv(record, api){
+ 
+    console.log(record);
+    console.log(api);
+ 
+    $("#btndelete").attr('onclick', 'submitDelete(' + record.id +', "' + api +'");');
+    $("#btnsubmit").attr('onclick', 'submitEdit(' + record.id +', "' + api +'");');
+ 
+    document.getElementById("modal-title").innerHTML="Edit a table";
+
+    // this function fills the modal
+    fillModal(record);
+    $("#confirmbutton").css('display', 'inline-block');
+    deleteID = record.id;
+    var elem = '<button type="button" class="btn btn-danger" onclick="submitDelete('+record.id+', \'' +api+'\');">Confirm delete</button>';
+    $('#confirmbutton').popover({
+        animation:true,
+        content:elem,
+        html:true,
+        container: modal
+    });
+ }
+
+ function fillModal(record){
+
+        $("#id").val(record.id);
+        $("#title").val(record.title);
+        $("#body").val(record.body);
+ }
+
+ function submitEdit(id, api){
+    
+       // shortcut for filling the formData as a JavaScript object with the fields in the form
+       var formData = $("#modalForm").serializeArray().reduce(function(result, object){ result[object.name] = object.value; return result}, {});
+       console.log("Formdata =>");
+       console.log(formData);
+       var id = formData.id;
+       for(var key in formData){
+           if(formData[key] == "" || formData == null) delete formData[key];
+       }
+
+       $.ajax({
+           url: api + "/" + id,
+           type:"put",
+           data: JSON.stringify(formData),
+           dataType: "json",
+           success: getData(api),
+           error: function(error){
+               console.log(error);
+           }
+       });
+    
+       deselect();
+       $('#modal').modal('toggle');
+    }
+ 
