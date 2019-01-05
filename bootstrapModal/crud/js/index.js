@@ -67,7 +67,6 @@ function getData(api) {
 
     // asynchronous REST GET
     $.get(api, function (data) {
-
         if (data) {
             $("#dataTable").DataTable().clear();
             $("#dataTable").DataTable().rows.add(data);
@@ -77,15 +76,10 @@ function getData(api) {
 }
 
 function getSingleRecord(id, api) {
-    console.log("Single record pre called: " + id);
 
     apiPath = String(api + "/" + id);
     $.get(apiPath, function (data) {
-
         if (data) {
-            console.log("Single record post called: " + id);
-            console.log("with data: : " + data.id);
-
             fillUpdateDiv(data, api);
         }
     });
@@ -95,15 +89,9 @@ function getSingleRecord(id, api) {
 function submitNew(api) {
 
     var formData = $("#modalForm").serializeArray().reduce(function (result, object) { result[object.name] = object.value; return result }, {});
-    console.log("Formdata");
-    console.log(formData);
-    //var id = formData.id;
     for (var key in formData) {
         if (formData[key] == "" || formData == null) delete formData[key];
     }
-
-    console.log("as string:" + JSON.stringify(formData));
-
 
     $.post({
         url: api,
@@ -133,10 +121,6 @@ function deselect() {
 
 function fillUpdateDiv(record, api) {
 
-    console.log(record);
-    console.log(api);
-
-    // $("#btndelete").attr('onclick', 'submitDelete(' + record.id +', "' + api +'");');
     $("#btnsubmit").attr('onclick', 'submitEdit(' + record.id + ', "' + api + '");');
 
     document.getElementById("modal-title").innerHTML = "Edit a table";
@@ -170,7 +154,6 @@ function submitEdit(id, api) {
     var formData = $("#modalForm").serializeArray().reduce(function (result, object) { result[object.name] = object.value; return result }, {});
     console.log("Formdata =>");
     console.log(formData);
-    var id = formData.id;
     for (var key in formData) {
         if (formData[key] == "" || formData == null) delete formData[key];
     }
@@ -192,17 +175,13 @@ function submitEdit(id, api) {
 }
 
 function submitDelete(id, api) {
-    console.log("About to remove: " + id);
-    var formData = $("#modalForm").serializeArray().reduce(function (result, object) { result[object.name] = object.value; return result }, {});
-    // rloman dit werkt niet via parameter. Waarom niet???
-    id = formData.id;
+   
     console.log(`Deleting row with id: ${id}`);
     $.ajax({
         url: api + "/" + id,
         type: "delete",
         dataType: 'json',
         success: getData(api),
-        contentType: "application/json; charset=utf-8"
     });
 
     $('#modal').modal('toggle');
