@@ -79,3 +79,40 @@ function getData(api) {
         }
     });
  }
+
+ function submitNew(api){
+    
+    var formData = $("#modalForm").serializeArray().reduce(function(result, object){ result[object.name] = object.value; return result}, {});
+    console.log("Formdata");
+    console.log(formData);
+    //var id = formData.id;
+    for(var key in formData){
+        if(formData[key] == "" || formData == null) delete formData[key];
+    }
+ 
+    console.log("as string:"+JSON.stringify(formData));
+ 
+ 
+    $.post({
+        url: api,
+        data: JSON.stringify(formData),
+        dataType: "json",
+        success: getData(api),
+        error: function(error){
+            console.log(error);
+        }
+    });
+ 
+    deselect();
+    $('#modal').modal('toggle');
+ }
+
+ // this function perform cleaning up of the table
+// 1. remove eventually selected class
+// 2. clean the form using the reset method
+function deselect(){
+
+    $('#dataTable tr.selected').removeClass('selected');
+    
+    document.getElementById("modalForm").reset();
+ }
