@@ -153,7 +153,9 @@ function fillModal(record) {
     $("#body").val(record.body);
 
     $("#confirmbutton").css('display', 'inline-block');
-    let elem = '<button type="button" class="btn btn-danger" onclick="submitDelete(' + record.id + ', \'' + api + '\');">Confirm delete</button>';
+    console.log("Pre delete create button element: id:"+record.id);
+    let elem = `<button type="button" class="btn btn-danger" onclick="submitDelete('${record.id}', '${api}');">Confirm delete</button>`;
+    $('#confirmbutton').popover('dispose');
     $('#confirmbutton').popover({
         animation: true,
         content: elem,
