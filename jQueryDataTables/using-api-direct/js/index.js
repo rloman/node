@@ -1,9 +1,11 @@
-$(document).ready(function() {
-    // $('#myTable').DataTable();
-    initDataTable('http://jsonplaceholder.typicode.com/users');
+$(document).ready(function () {
 
-    $(".btn-warning").click(clear);
+    let api = 'http://jsonplaceholder.typicode.com/users';
+    initDataTable(api);
+
     $(".btn").click(getData);
+    $(".btn-warning").click(clear);
+
 
 });
 
@@ -15,27 +17,30 @@ function initDataTable(api) {
         { "data": "username" },
         /* data, type, row, meta */
         // https://datatables.net/reference/option/columns.render
-        {  "render": function(data, type, row, meta){
-            // data : data for the cell
-            // type seems to be the class of the table (e.g. display)
-            // row seems to be the per iteration object (in this case a user)
-              return `<a onclick="remove(${row.id});" title="Remove this table"> <i class="fa fa-pencil-alt">Delete ${row.id}</i> </a>`;
-            } 
+        // just to show the workings, not used in real life
+        {
+            "render": function (data, type, row, meta) {
+                // data : data for the cell
+                // type seems to be the class of the table (e.g. display)
+                // row seems to be the per iteration object (in this case a user)
+                return `<a onclick="remove(${row.id});" title="Remove this table"> <i class="fa fa-pencil-alt">XXX ${row.id}</i> </a>`;
+            }
         },
     ];
 
-    $('#dataTable').DataTable( {
-        "order": [[ 0, "asc" ]],
+    // how simple it is to create a datatable :-)
+    $('#dataTable').DataTable({
+        "order": [[0, "asc"]],
         "ajax": {
             url: api,
             dataSrc: ''
         },
         "columns": columns
-    } );
+    });
 }
 
 function remove(id) {
-    alert(id);
+    alert(`About to remove user with id: ${id}`);
 }
 
 function clear() {
@@ -44,5 +49,5 @@ function clear() {
 }
 
 function getData() {
-          $("#dataTable").dataTable().api().ajax.reload();
- }
+    $("#dataTable").dataTable().api().ajax.reload();
+}

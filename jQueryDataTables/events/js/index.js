@@ -32,11 +32,13 @@ function initDataTable() {
         "columns": columns
     } );
 
+    // mention this
     $('#dataTable tbody').on('click', 'tr', function () {
         var personData = dataTable.row( this ).data();
-        alert( 'You clicked on '+personData.id+'\'s row' );
-        alert( `which has title "${personData.title}"` );
-
+       
+        $("#flash").html(`You clicked on ${personData.id}'s row`).append(`<br>which has title "${personData.title}"`);
+        $("#flash").show(1800);
+        $("#flash").hide(1800);
 
         // and now we could fetch the detail data of this one row and use Bootstrap Modal (later)
         // https://getbootstrap.com/docs/4.0/components/modal/
