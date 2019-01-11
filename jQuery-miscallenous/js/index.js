@@ -30,9 +30,12 @@ function workingWithTheWrappedElementSet() {
 
 function workingWithForms() {
   // all checked boxed
-  $("[name='myForm']:checked").each(function() {
+  $("input:checked").each(function() {
     console.log($(this).val());
   });
+
+// rloman add radioset???
+
 
 }
 
