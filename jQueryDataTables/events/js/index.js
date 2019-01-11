@@ -3,7 +3,7 @@ $(document).ready(function() {
     let api = 'http://jsonplaceholder.typicode.com/posts';
 
     getData(api);
-    
+
 
     $("#fetch").click(function() {
         getData(api);
@@ -17,10 +17,10 @@ $(document).ready(function() {
 function initDataTable() {
 
     columns = [
-        { "title": "ID",   "data": "id" }, 
+        { "title": "ID",   "data": "id" },
         { "title": "Title", "data": "title" },
         { "title": "Body of post", "data": "body" },
-      
+
         /*,
         {  "render": function(data, type, row, meta){
             return '<a title="Delete this table" <i class="fa fa-pencil-alt"></i> </a>';
@@ -35,10 +35,10 @@ function initDataTable() {
     // mention this
     $('#dataTable tbody').on('click', 'tr', function () {
         var personData = dataTable.row( this ).data();
-       
+
         $("#flash").html(`You clicked on ${personData.id}'s row`).append(`<br>which has title "${personData.title}"`);
-        $("#flash").show(1800);
-        $("#flash").hide(1800);
+        $("#flash").show(3000);
+        $("#flash").hide(3000);
 
         // and now we could fetch the detail data of this one row and use Bootstrap Modal (later)
         // https://getbootstrap.com/docs/4.0/components/modal/
