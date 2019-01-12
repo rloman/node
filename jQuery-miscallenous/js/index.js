@@ -63,9 +63,38 @@ function liveEventHandling() {
     $("#addButtonButton").click(function() {
       $("<button>Click me</button>").addClass("binding").appendTo("body");
     });
+}
 
+function triggerEventsFromCode() {
+  // click the button automatically with class .binding
+  $("a").click(function() {
+    // now we are at it ...
+    $("button.binding").trigger("click", {
+      // some extra JSON ???
+      someData: 'hello'
+    });
+  });
+}
 
+function utilityFunctions() {
+  let values = [0,1,1,2,3,5,8,13,21,34,55];
 
+  // a loop $.each(container, callback)
+  $.each(values, function(index) {
+    console.log(`Fibon: ${index} has value ${this}`);
+  });
+
+  // mapping
+  // $.map(container, callback)
+  // Creates a new collection containing the returned values from the map function
+  let newValues = $.map(values, function(data, index) {
+      return data * data;
+  });
+
+  // loop it again using each :-)
+  $.each(newValues, function(index){
+      console.log(`${values[index]} squared is ${this}`);
+  });
 }
 
 $(document).ready(function() {
@@ -73,7 +102,9 @@ $(document).ready(function() {
   selectOnlyInputTypeText();
   workingWithTheWrappedElementSet();
   workingWithForms();
-  events();
-  liveEventHandling()
+  // events();
+  liveEventHandling();
+  triggerEventsFromCode();
+  utilityFunctions();
 
 });
