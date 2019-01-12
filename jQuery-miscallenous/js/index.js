@@ -95,6 +95,13 @@ function utilityFunctions() {
   $.each(newValues, function(index){
       console.log(`${values[index]} squared is ${this}`);
   });
+
+  // now gimme only the even Fibonacci numbers please
+// $.grep(array, function(, invert))
+  let evenFibons = $.grep(values, function(element) {
+    return element %2 == 0;
+  });
+  console.table(evenFibons);
 }
 
 $(document).ready(function() {
