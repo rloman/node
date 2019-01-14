@@ -59,10 +59,9 @@ function liveEventHandling() {
       console.log("Live is life, Focus");
     });
 
-    $("#addButtonButton").click(function(event, a,b) {
+    $("#addButtonButton").click(function(event, ... data) {
       console.log(event); // should be some like click
-      console.log(a); // the passed in data
-      console.log(b);
+      console.log(data);
       $("<button>Click me</button>").addClass("binding").appendTo("body");
     });
 }
