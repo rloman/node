@@ -34,7 +34,6 @@ function workingWithForms() {
     console.log($(this).val());
   });
 
-// rloman add radioset???
 }
 
 function events() {
