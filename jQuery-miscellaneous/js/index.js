@@ -60,6 +60,7 @@ function liveEventHandling() {
     });
 
     $("#addButtonButton").click(function(event, data) {
+      assert(event.type === 'click');
       console.log(event); // should be some like click
       console.log(data);
       $("<button>Click me</button>").addClass("binding").appendTo("body");
