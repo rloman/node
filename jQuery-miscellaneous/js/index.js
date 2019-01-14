@@ -59,7 +59,10 @@ function liveEventHandling() {
       console.log("Live is life, Focus");
     });
 
-    $("#addButtonButton").click(function() {
+    $("#addButtonButton").click(function(event, a,b) {
+      console.log(event); // should be some like click
+      console.log(a); // the passed in data
+      console.log(b);
       $("<button>Click me</button>").addClass("binding").appendTo("body");
     });
 }
@@ -68,10 +71,10 @@ function triggerEventsFromCode() {
   // click the button automatically with class .binding
   $("a").click(function() {
     // now we are at it ...
-    $("button.binding").trigger("click", {
-      // some extra JSON ???
-      someData: 'hello'
-    });
+    $("#addButtonButton").trigger("click", [
+      // some extra JSON / array which is send as parameter(s) after the first parameter (which is the event)
+      'foo', 'bar'
+    ]);
   });
 }
 
