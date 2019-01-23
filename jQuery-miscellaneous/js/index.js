@@ -56,7 +56,7 @@ function liveEventHandling() {
     // bind handler to elements that might not be an the page yet
     // Handler is added to newly created elements that match the selector
     $("body").on("click", ".binding",  function() {
-      console.log("Live is life, Focus");
+      console.log("Life is life, Opus");
     });
 
     $("#addButtonButton").click(function(event, data) {
@@ -70,7 +70,7 @@ function liveEventHandling() {
 function triggerEventsFromCode() {
   // click the button automatically with class .binding
   $("a").click(function() {
-    $("#addButtonButton").trigger("click", {
+    $(".binding").trigger("click", {
       someData: 'hello'
     });
     // other examples for sending some data using the .trigger
@@ -104,7 +104,8 @@ function utilityFunctions() {
   let evenFibons = $.grep(values, function(element) {
     return element %2 == 0;
   });
-  console.table(evenFibons);
+  console.clear();
+  console.error(evenFibons);
 }
 
 $(document).ready(function() {
