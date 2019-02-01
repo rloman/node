@@ -30,6 +30,7 @@ function* getPrimes(start, end) {
 assert("22 should not be prime", !isPrime(22));
 assert("16 should not be prime", !isPrime(16));
 assert("25 should not be prime", !isPrime(25));
+assert("6 should not be prime", !isPrime(6));
 
 
 assert("should be prime", isPrime(5));
