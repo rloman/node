@@ -1,10 +1,3 @@
-function assert(assertion, message) {
-    if (!assertion) {
-        throw new Error(message);
-    }
-}
-
-
 function getPrimeFactors(n) {
 
     let factorList = po(2, n);
@@ -28,7 +21,15 @@ function po(lastFactor, n) {
 
             result.push(lastFactor);
 
-            result.push(po(lastFactor, n / lastFactor));
+            // recursively factorise  n / lastFactor
+
+            let toBeFactored = po(lastFactor, n / lastFactor);
+
+            for (let element of toBeFactored) {
+                result.push(element);
+            }
+
+
         }
 
         // if not; increment the lastFactor by 1 and retry the recursive po
@@ -43,6 +44,16 @@ function po(lastFactor, n) {
     return result;
 }
 
+function assert(assertion, message) {
+    if (!assertion) {
+        throw new Error(message);
+    }
+}
+
 
 console.log(getPrimeFactors(4));
 console.log(getPrimeFactors(24));
+
+console.log(getPrimeFactors(521));
+
+console.log(getPrimeFactors(2005));
