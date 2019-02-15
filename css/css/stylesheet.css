@@ -1,0 +1,49 @@
+
+/* for all body tags */
+body {
+    background-color: #f7f7f7;
+}
+
+/* for all p(aragraph) tags */
+p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: lighter;
+}
+
+div {
+  background-color: grey;
+}
+
+p:hover {
+  background-color: red;
+}
+
+
+div p {
+    background-color:#1f1f1f;
+}
+
+.menu {
+  background-color: #a82424;
+}
+
+#header {
+  background-color: red;
+}
+
+#footer {
+  background-color: yellow;
+}
+
+
+
+/* for all paragraph tags with class ok */
+p.ok {
+    color: green;
+    font-weight: bolder;
+}
+
+/* for ONLY ONE paragraphich with id rocker */
+#rocker {
+    color: blue;
+}

@@ -22,14 +22,14 @@ function _po(lastFactor, n) {
             result.push(lastFactor);
 
             // recursively factorise  n / lastFactor
-
             let toBeFactored = _po(lastFactor, n / lastFactor);
 
+
+
+            // // add the sub elements to the result
             for (let element of toBeFactored) {
                 result.push(element);
             }
-
-
         }
 
         // if not; increment the lastFactor by 1 and retry the recursive _po
@@ -40,7 +40,6 @@ function _po(lastFactor, n) {
         }
 
     }
-
     return result;
 }
 
@@ -50,10 +49,18 @@ function assert(assertion, message) {
     }
 }
 
+function assertEquals(a, b) {
+    if(a != b) {
+        let label =`Expected: >${a}<, but was: >${b}<`;
+        throw new Error(label);
+    }
+}
+
 
 console.log(po(4));
 console.log(po(24));
-
 console.log(po(521));
-
 console.log(po(2005));
+
+
+assertEquals([2,2,2,3], po(24));
