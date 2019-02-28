@@ -135,6 +135,7 @@ function fillModal(record) {
     $("#id").val(record.id);
     $("#title").val(record.title);
     $("#body").val(record.body);
+    console.log(modal);
 
     $("#confirmbutton").css('display', 'inline-block');
     console.log("Pre delete create button element: id:"+record.id);
