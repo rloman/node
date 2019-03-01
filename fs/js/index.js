@@ -1,1 +1,1 @@
-alert('test');
+alert('test for showing that this file can be opened!!!');
