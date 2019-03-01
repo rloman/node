@@ -16,10 +16,20 @@ app.use(function (req, res, next) {
 });
 
 
-// to open a js file which is used in index.html
+// to open a specific file in js folder
 app.get('/js/index.js', function(req,res) {
     res.writeHead(200, { 'Content-Type': 'application/js' });
     fs.readFile('js/index.js', function(err, data) {
+      res.write(data);
+      res.end();
+    });
+})
+
+// to open an arbitray file which is used in the js file
+app.get('/js/:filename', function(req,res) {
+  let filename = req.params.filename;
+    res.writeHead(200, { 'Content-Type': 'application/js' });
+    fs.readFile(`js/${filename}` , function(err, data) {
       res.write(data);
       res.end();
     });
