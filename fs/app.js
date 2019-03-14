@@ -43,6 +43,18 @@ app.get('/', function (req, res) {
     });
 })
 
+// to open an arbitray file which is used in the js file
+app.get('^/images/:filename', function(req,res) {
+
+    console.log(`${req.params.filename}`);
+    let filename = req.params.filename;
+      res.writeHead(200, { 'Content-Type': 'application/js' });
+      fs.readFile(`public/images/${filename}.jpg` , function(err, data) {
+        res.write(data);
+        res.end();
+      });
+  })
+
 app.get('/api/users', function (req, res) {
 
     let users = [];
