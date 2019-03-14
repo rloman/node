@@ -43,8 +43,8 @@ app.get('/', function (req, res) {
     });
 })
 
-// to open an arbitray file which is used in the js file
-app.get('^/images/:filename', function(req,res) {
+// to open an arbitray file which is used e.g. an image
+app.get('^/images/(:filename)\.jpg$', function(req,res) {
 
     console.log(`${req.params.filename}`);
     let filename = req.params.filename;
